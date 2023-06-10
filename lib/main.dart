@@ -6,7 +6,6 @@ import 'package:flutter_trial/coded/main_page.dart';
 import 'package:flutter_trial/shared/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
 import 'coded/fancysignin.dart';
 import 'coded/forgotpasswordpage.dart';
 
@@ -573,94 +572,96 @@ class _StudentDetailsPageState extends State<StudentDetailsPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Student Name: ${widget.studentName}',
-              style: const TextStyle(fontSize: 24),
-            ),
-            const SizedBox(height: 20),
-            buildActionCard(
-              icon: Icons.email,
-              color: Colors.grey,
-              title: 'Send Email to ${widget.studentName}',
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: const Text('Error'),
-                      content: Text(
-                          '${widget.studentName} doesnt want to get an email right now'),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Text('OK'),
-                        ),
-                      ],
-                    );
-                  },
-                );
-              },
-            ),
-            const SizedBox(height: 10),
-            buildActionCard(
-              color: Colors.grey,
-              icon: Icons.rate_review,
-              title: 'Grading Final Project for ${widget.studentName}',
-              subtitle: selectedgrade.isNotEmpty
-                  ? '${widget.studentName} grade is : $selectedgrade'
-                  : 'Tap to enter grade',
-              onTap: () {
-                showgradingDialog();
-              },
-            ),
-            const SizedBox(height: 10),
-            buildActionCard(
-              color: Colors.grey,
-              icon: Icons.food_bank,
-              title: 'Favorite Snack of ${widget.studentName}',
-              subtitle: selectedfood.isNotEmpty
-                  ? 'Selected: $selectedfood'
-                  : 'Tap to choose',
-              onTap: () {
-                showfoodDialog();
-              },
-            ),
-            const SizedBox(height: 10),
-            buildActionCard(
-              color: Colors.grey,
-              icon: Icons.add_reaction_sharp,
-              title: 'Choose Impression',
-              subtitle: selectedImpression.isNotEmpty
-                  ? 'Selected: $selectedImpression'
-                  : 'Tap to choose',
-              onTap: () {
-                showImpressionDialog();
-              },
-            ),
-            const SizedBox(height: 10),
-            buildActionCard(
-              color: Colors.grey,
-              icon: Icons.calendar_today,
-              title: 'Schedule Meeting with ${widget.studentName}',
-              subtitle: selectedapointement.isNotEmpty
-                  ? 'Apointement with ${widget.studentName} at $selectedapointement'
-                  : 'Tap to choose an apointement',
-              onTap: () {
-                showApointementDialog();
-              },
-            ),
-            const SizedBox(height: 10),
-            buildActionCard(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Student Name: ${widget.studentName}',
+                style: const TextStyle(fontSize: 24),
+              ),
+              const SizedBox(height: 20),
+              buildActionCard(
+                icon: Icons.email,
                 color: Colors.grey,
-                icon: Icons.report,
-                title: 'Report ${widget.studentName} for cheating',
-                onTap: () {}),
-          ],
+                title: 'Send Email to ${widget.studentName}',
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Error'),
+                        content: Text(
+                            '${widget.studentName} doesnt want to get an email right now'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+              ),
+              const SizedBox(height: 10),
+              buildActionCard(
+                color: Colors.grey,
+                icon: Icons.rate_review,
+                title: 'Grading Final Project for ${widget.studentName}',
+                subtitle: selectedgrade.isNotEmpty
+                    ? '${widget.studentName} grade is : $selectedgrade'
+                    : 'Tap to enter grade',
+                onTap: () {
+                  showgradingDialog();
+                },
+              ),
+              const SizedBox(height: 10),
+              buildActionCard(
+                color: Colors.grey,
+                icon: Icons.food_bank,
+                title: 'Favorite Snack of ${widget.studentName}',
+                subtitle: selectedfood.isNotEmpty
+                    ? 'Selected: $selectedfood'
+                    : 'Tap to choose',
+                onTap: () {
+                  showfoodDialog();
+                },
+              ),
+              const SizedBox(height: 10),
+              buildActionCard(
+                color: Colors.grey,
+                icon: Icons.add_reaction_sharp,
+                title: 'Choose Impression',
+                subtitle: selectedImpression.isNotEmpty
+                    ? 'Selected: $selectedImpression'
+                    : 'Tap to choose',
+                onTap: () {
+                  showImpressionDialog();
+                },
+              ),
+              const SizedBox(height: 10),
+              buildActionCard(
+                color: Colors.grey,
+                icon: Icons.calendar_today,
+                title: 'Schedule Meeting with ${widget.studentName}',
+                subtitle: selectedapointement.isNotEmpty
+                    ? 'Apointement with ${widget.studentName} at $selectedapointement'
+                    : 'Tap to choose an apointement',
+                onTap: () {
+                  showApointementDialog();
+                },
+              ),
+              const SizedBox(height: 10),
+              buildActionCard(
+                  color: Colors.grey,
+                  icon: Icons.report,
+                  title: 'Report ${widget.studentName} for cheating',
+                  onTap: () {}),
+            ],
+          ),
         ),
       ),
     );
